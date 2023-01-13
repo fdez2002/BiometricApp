@@ -4,7 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:filterTouchesWhenObscured="false"
     android:orientation="vertical"
+    android:visibility="invisible"
+    tools:visibility="visible"
     tools:context=".MainActivity">
 
     <TextView
@@ -48,10 +51,11 @@
         android:minHeight="48dp" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button_save_data"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="Guardar" />
+        android:text="Guardar"
+        android:visibility="visible" />
 
 </LinearLayout>
