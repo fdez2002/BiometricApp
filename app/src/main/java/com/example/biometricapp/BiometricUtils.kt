@@ -32,10 +32,10 @@ object BiometricUtils {
 
     //mostramos el promt de geometria
     fun showPromopt(
-        title: String ="",
-        subtitle: String ="",
-        description: String= "",
-        cancelButton: String = "",
+        title: String ="Autenticacion Biometrica",
+        subtitle: String ="Introduce tus credenciales",
+        description: String= "Introduce tus huella para verificar que eres tu",
+        cancelButton: String = "Cancelar",
         activity: AppCompatActivity,
         callback: BiometricAuthCallback
     ){
@@ -46,7 +46,9 @@ object BiometricUtils {
                 .setDescription(description)
                 .setAllowedAuthenticators(BIOMETRIC_WEAK)
                 .setNegativeButtonText(cancelButton)
-
+                .build()
+        val prompt = initPrompt(activity, callback)
+        prompt.authenticate(promptInfo)
 
     }
     private fun initPrompt(activity: AppCompatActivity, callback: BiometricAuthCallback):BiometricPrompt{
