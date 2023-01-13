@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">BiometricApp</string>
+    <string name="email">Email</string>
+    <string name="n_mero">Número</string>
+    <string name="nombre">Nombre</string>
+    <string name="mis_datos">Mis Datos</string>
+</resources>
