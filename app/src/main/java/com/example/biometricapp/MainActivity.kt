@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.example.biometricapp.databinding.ActivityMainBinding
+import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity(), BiometricAuthCallback {
     private lateinit var binding: ActivityMainBinding
@@ -30,9 +31,12 @@ class MainActivity : AppCompatActivity(), BiometricAuthCallback {
         showBiometricPrompt()
         //rellenamos los datos
         fillUserData()
-        binding.buttonSaveData.setOnClickListener {
+        binding.buttonSaveData.setOnClickListener { view ->
             //dejamos el boton escuhando eventos de click
             saveUserData()
+            Snackbar.make(view, "Datos guardados", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show()
+
         }
 
     }
