@@ -1,11 +1,13 @@
 package com.example.biometricapp
 
+import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import com.example.biometricapp.databinding.ActivityMainBinding
 import com.google.android.material.snackbar.Snackbar
@@ -34,6 +36,7 @@ class MainActivity : AppCompatActivity(), BiometricAuthCallback {
         binding.buttonSaveData.setOnClickListener { view ->
             //dejamos el boton escuhando eventos de click
             saveUserData()
+            hideKeyboard()
             Snackbar.make(view, "Datos guardados", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
 
@@ -83,6 +86,17 @@ class MainActivity : AppCompatActivity(), BiometricAuthCallback {
         editor.putString(PHONE, binding.editTextNumber.text.toString())
         editor.apply()
 
+    }
+
+
+
+    fun Activity.hideKeyboard() {
+        hideKeyboard(currentFocus ?: View(this))
+    }
+
+    fun Context.hideKeyboard(view: View) {
+        val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
 
